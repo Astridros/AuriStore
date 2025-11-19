@@ -147,9 +147,7 @@ async function handleLogin(event) {
             // Redirigir según el rol
             setTimeout(() => {
                 if (data.role === 'Admin') {
-                    // TODO: Descomentar cuando admin.html esté listo
-                    // window.location.href = 'admin.html';
-                    window.location.href = 'user.html'; // Temporal
+                    window.location.href = 'admin.html';
                 } else {
                     window.location.href = 'user.html';
                 }
@@ -197,7 +195,7 @@ async function handleRegister(event) {
     setButtonLoading('registerBtn', true);
     
     try {
-        const response = await fetch(`${API_BASE_URL}/Users`, {
+        const response = await fetch(`${API_BASE_URL}/User`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
