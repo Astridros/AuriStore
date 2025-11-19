@@ -32,10 +32,6 @@ namespace AuriStore.Infrastructure.Persistence.Configurations
             builder.Property(p => p.ImageUrl)
                 .HasMaxLength(300);
 
-            builder.HasOne(p => p.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.CategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

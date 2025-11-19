@@ -95,8 +95,7 @@ namespace AuriStore.Application.Services
                 Description = p.Description,
                 Price = p.Price,
                 Stock = p.Stock,
-                ImageUrl = p.ImageUrl,
-                Category = p.Category?.Name
+                ImageUrl = p.ImageUrl
             };
         }
     }
