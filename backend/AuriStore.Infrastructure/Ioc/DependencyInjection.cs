@@ -28,6 +28,8 @@ namespace AuriStore.Infrastructure.Ioc
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>(); 
+            services.AddScoped<IProductService, ProductService>();
 
 
             return services;
