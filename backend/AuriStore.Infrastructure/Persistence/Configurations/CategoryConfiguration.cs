@@ -20,9 +20,6 @@ namespace AuriStore.Infrastructure.Persistence.Configurations
                 .HasMaxLength(500)
                 .IsRequired();
 
-            builder.HasMany(c => c.Products)
-                .WithOne(p => p.Category)
-                .HasForeignKey(p => p.CategoryId);
         }
     }
 }
