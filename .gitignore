@@ -364,5 +364,5 @@ FodyWeavers.xsd
 
 # Environment variables
 .env
-*/.env
-**/.env
+*.env
+backend/AuriStore.API/.env
