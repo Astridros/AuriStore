@@ -154,7 +154,7 @@ function createProductCard(product) {
             <p class="product-description">${product.description || 'Sin descripción'}</p>
             <div class="product-footer">
                 <div>
-                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="product-price">${product.price.toFixed(2)}</div>
                     ${stockBadge}
                 </div>
             </div>
@@ -174,9 +174,6 @@ function getCategoryName(categoryId) {
 
 // Mostrar detalle del producto
 function showProductDetail(product) {
-    // Obtener el nombre de la categoría usando el categoryId
-    const categoryName = getCategoryName(product.categoryId);
-    
     let stockInfo = '';
     if (product.stock === 0) {
         stockInfo = '<span class="badge bg-danger">Agotado</span>';
@@ -194,7 +191,7 @@ function showProductDetail(product) {
                     `<img src="${product.imageUrl}" style="width:100%; max-height:300px; object-fit:cover; border-radius:10px; margin-bottom:1rem;">` : 
                     '<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height:200px; display:flex; align-items:center; justify-content:center; color:white; font-size:4rem; border-radius:10px; margin-bottom:1rem;"><i class="bi bi-headphones"></i></div>'
                 }
-                <p><strong>Categoría:</strong> ${categoryName}</p>
+                <p><strong>Categoría:</strong> ${product.category || 'Sin categoría'}</p>
                 <p><strong>Descripción:</strong> ${product.description || 'Sin descripción'}</p>
                 <p><strong>Precio:</strong> <span style="color: #6366f1; font-size: 1.5rem; font-weight: bold;">$${product.price.toFixed(2)}</span></p>
                 <p><strong>Disponibilidad:</strong> ${stockInfo}</p>
@@ -223,18 +220,21 @@ async function filterByCategory(categoryId, button) {
             products = allProducts;
         } else {
             // Filtrar por categoría
-            products = allProducts.filter(p => p.categoryId === categoryId);
+            const response = await fetch(`${API_BASE_URL}/Product/category/${categoryId}`);
+            if (response.ok) {
+                products = await response.json();
+            } else {
+                products = [];
+            }
         }
         
         // Aplicar también el filtro de búsqueda si existe
         const searchTerm = document.getElementById('searchInput').value.toLowerCase();
         if (searchTerm) {
-            products = products.filter(p => {
-                const categoryName = getCategoryName(p.categoryId);
-                return p.name.toLowerCase().includes(searchTerm) ||
-                       (p.description && p.description.toLowerCase().includes(searchTerm)) ||
-                       categoryName.toLowerCase().includes(searchTerm);
-            });
+            products = products.filter(p => 
+                p.name.toLowerCase().includes(searchTerm) ||
+                (p.description && p.description.toLowerCase().includes(searchTerm))
+            );
         }
         
         renderProducts(products);
@@ -259,12 +259,11 @@ function filterProducts() {
     
     // Aplicar filtro de búsqueda
     if (searchTerm) {
-        filteredProducts = filteredProducts.filter(product => {
-            const categoryName = getCategoryName(product.categoryId);
-            return product.name.toLowerCase().includes(searchTerm) ||
-                   (product.description && product.description.toLowerCase().includes(searchTerm)) ||
-                   categoryName.toLowerCase().includes(searchTerm);
-        });
+        filteredProducts = filteredProducts.filter(product =>
+            product.name.toLowerCase().includes(searchTerm) ||
+            (product.description && product.description.toLowerCase().includes(searchTerm)) ||
+            (product.category && product.category.toLowerCase().includes(searchTerm))
+        );
     }
     
     renderProducts(filteredProducts);
