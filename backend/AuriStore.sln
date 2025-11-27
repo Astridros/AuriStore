@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuriStore.Domain", "AuriStore.Domain\AuriStore.Domain.csproj", "{72E855A7-A7D4-4303-8C20-D6E2B73A9EAB}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuriStore.Infrastructure", "AuriStore.Infrastructure\AuriStore.Infrastructure.csproj", "{19BEEA12-CC08-4915-947A-8AC5080BFE11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuriStore.API", "AuriStore.API\AuriStore.API.csproj", "{18C0AE4D-89B3-4A97-B38D-BBF2320C27F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuriStore.Tests.UI", "AuriStore.Tests.UI\AuriStore.Tests.UI.csproj", "{C1B03CDA-BAF4-4245-AAEA-CA49F8BD95B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{18C0AE4D-89B3-4A97-B38D-BBF2320C27F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18C0AE4D-89B3-4A97-B38D-BBF2320C27F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18C0AE4D-89B3-4A97-B38D-BBF2320C27F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1B03CDA-BAF4-4245-AAEA-CA49F8BD95B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1B03CDA-BAF4-4245-AAEA-CA49F8BD95B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1B03CDA-BAF4-4245-AAEA-CA49F8BD95B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1B03CDA-BAF4-4245-AAEA-CA49F8BD95B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
